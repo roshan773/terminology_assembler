@@ -23,9 +23,11 @@ with open(file_name, 'r') as file:
 	queries = file.readlines()
 
 file_1 = open(file_name[:-4]+'_with_definitions.txt', 'w')
+#opening a new text file to add the definitions
 
 for query in queries:
 	print('\n'+query[:-1])
+	# the last character is new line
 	
 	search_result = search('wiki '+query, num=1, stop=1)
 	url = search_result.__next__()
@@ -37,10 +39,10 @@ for query in queries:
 		# This if condition takes care of skipping that paragraph 
 		if p.text.__len__() > 5:
 			paragraph = p.text
-			# once found a paragraph with text breaking the loop
+			# once found a paragraph with text, breaking the loop
 			break
 
 	print(paragraph)
-	file_1.write(query[:-1]+':  '+paragraph+'\n')
+	file_1.write(query[:-1] + ':  ' + paragraph + '\n')
 
 file_1.close()

@@ -36,7 +36,7 @@ for query in queries:
 	soup = BeautifulSoup(requests.get(url).content, 'html.parser')
 	for p in soup.find_all('p'):
 		# Certain first paragraphs in wiki contains empty string or a junk character
-		# This if condition takes care of skipping that paragraph 
+		# This takes care of skipping that paragraph 
 		if p.text.__len__() > 5:
 			paragraph = p.text
 			# once found a paragraph with text, breaking the loop
